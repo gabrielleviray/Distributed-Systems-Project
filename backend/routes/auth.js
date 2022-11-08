@@ -4,7 +4,7 @@ const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 
 router.post('/register', async (req, res) => {
-  if (!(req.body.name && req.body.username && req.body.email && req.body.password)) {
+  if (!req.body.name || !req.body.username || !req.body.email || !req.body.password) {
     return res.status(400).json({ error: 'Missing required information' });
   }
 
