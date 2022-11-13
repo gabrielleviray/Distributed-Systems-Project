@@ -25,6 +25,6 @@ exports.addRecipe = async (req, res) => {
 };
 
 exports.getAllRecipes = async (req, res) => {
-  const recipes = await Recipe.find({});
+  const recipes = await Recipe.find({}).sort({ createdAt: -1 });
   return res.status(200).json(recipes);
 };
