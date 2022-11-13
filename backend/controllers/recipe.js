@@ -23,3 +23,8 @@ exports.addRecipe = async (req, res) => {
     }
   })
 };
+
+exports.getAllRecipes = async (req, res) => {
+  const recipes = await Recipe.find({});
+  return res.status(200).json(recipes);
+};
