@@ -28,3 +28,16 @@ exports.checkCacheForAllRecipes = async (req, res, next) => {
   }
   next();
 };
+
+exports.checkCacheForUser = async (req, res, next) => {
+  try {
+    const key = 'user:' + req.params.username;
+    const data = await client.get(key);
+    if (data) {
+      return res.status(200).json(JSON.parse(data));
+    }
+  } catch (err) {
+    console.log(err);
+  }
+  next();
+};
