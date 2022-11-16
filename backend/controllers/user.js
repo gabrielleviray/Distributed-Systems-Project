@@ -44,7 +44,7 @@ exports.addFollower = async (req, res) => {
       return res.status(400).json({ error: `Failed to update the other user's follower list` });
     }
   });
-  return res.status(200).json({ message: `Successfully followed user` });
+  return res.status(200).json({ message: 'Successfully followed user' });
 };
 
 exports.unfollowUser = async (req, res, next) => {
@@ -67,4 +67,23 @@ exports.removeFollower = async (req, res) => {
     }
   })
   return res.status(200).json({ message: 'Successfully unfollowed user' });
+};
+
+exports.getFolllowingRecipes = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id).populate('following', 'username').lean().exec();
+    const recipes = await Recipe.find({}).select('-__v').sort({ createdAt: -1 });
+    const following = user.following;
+
+    let data = [];
+    for (const recipe of recipes) {
+      if (following.some(u => u.username === recipe.username)) {
+        data.push(recipe);
+      }
+    }
+    return res.status(200).json({ recipes: data });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ error: 'Something went wrong. Please try again later.' });
+  }
 };
