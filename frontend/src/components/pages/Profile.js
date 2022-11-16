@@ -16,9 +16,11 @@ const Profile = ()=> {
                 <div>
                     <h4>gabrielle viray</h4>
                     <div style={{display:"flex", justifyContent:"space-between", width:"110%"}}>
-                        <h6>20 posts</h6>
-                        <h6>20 followers</h6>
-                        <h6>20 following</h6>
+                        <ul>
+                            <h6>20 recipes</h6>
+                            <h6>20 following</h6>
+                            <h6>20 following</h6>
+                        </ul>
                     </div>
                 </div>
             

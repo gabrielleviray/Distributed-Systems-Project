@@ -3,9 +3,10 @@ import NavBar from './components/Navbar'
 import "./App.css"
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import Home from './components/pages/Home'
-import SignIn from './components/pages/SignIn'
-import SignUp from './components/pages/SignUp'
+import Login from './components/pages/Login'
+import Register from './components/pages/Register'
 import Profile from './components/pages/Profile'
+import AddRecipe from './components/pages/AddRecipe'
 
 function App() {
   return (
@@ -14,9 +15,10 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/addRecipe" element={<AddRecipe />} />
         </Routes>
     </BrowserRouter> 
     

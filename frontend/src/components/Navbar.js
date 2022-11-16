@@ -6,9 +6,11 @@ const NavBar = ()=>{
         <div className="nav-wrapper white">
           <Link to="/" className="food-blog-font left">Food Blog</Link>
           <ul id="nav-mobile" className="right">
-            <li><Link to="signin">Login</Link></li>
-            <li><Link to="signup">Signup</Link></li>
+            <li><Link to="login">Login</Link></li>
+            <li><Link to="register">Register</Link></li>
             <li><Link to="profile">Profile</Link></li>
+            <li><Link to="addRecipe">Add Recipe</Link></li>
+
           </ul>
         </div>
       </nav>
