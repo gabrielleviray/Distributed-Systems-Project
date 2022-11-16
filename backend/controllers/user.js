@@ -46,3 +46,25 @@ exports.addFollower = async (req, res) => {
   });
   return res.status(200).json({ message: `Successfully followed user` });
 };
+
+exports.unfollowUser = async (req, res, next) => {
+  const uid = req.user._id;
+  const unfollowId = req.body.unfollowId;
+  User.findByIdAndUpdate(uid, { $pull: { following: unfollowId } }, (err, result) => {
+    if (err) {
+      return res.status(400).json({ error: `Failed to update this user's following list` });
+    }
+    next();
+  })
+};
+
+exports.removeFollower = async (req, res) => {
+  const uid = req.user._id;
+  const unfollowId = req.body.unfollowId;
+  User.findByIdAndUpdate(unfollowId, { $pull: { followers: uid } }, (err, result) => {
+    if (err) {
+      return res.status(400).json({ error: `Failed to update the other user's follower list` });
+    }
+  })
+  return res.status(200).json({ message: 'Successfully unfollowed user' });
+};
