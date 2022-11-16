@@ -8,8 +8,10 @@ const {
     addFollower,
     unfollowUser,
     removeFollower,
+    getFolllowingRecipes,
 } = require('../controllers/user');
 
+router.get('/following-recipes', verifyToken, getFolllowingRecipes);
 router.get('/:username', checkCacheForUser, getUserData);
 router.put('/follow', verifyToken, followUser, addFollower);
 router.put('/unfollow', verifyToken, unfollowUser, removeFollower);
