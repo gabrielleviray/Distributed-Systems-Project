@@ -13,6 +13,7 @@ exports.getUserData = async (req, res) => {
   const userRecipes = await Recipe.find({ username: user.username }).select('-__v').sort({ createdAt: -1 });
 
   const userData = {
+    id: user._id,
     name: user.name,
     username: user.username,
     recipes: userRecipes,
@@ -22,4 +23,26 @@ exports.getUserData = async (req, res) => {
   const value = JSON.stringify(userData);
   redisHelper.set(key, value, 60);
   return res.status(200).json(userData);
+};
+
+exports.followUser = async (req, res, next) => {
+  const uid = req.user._id;
+  const followId = req.body.followId;
+  User.findByIdAndUpdate(uid, { $push: { following: followId } }, (err, result) => {
+    if (err) {
+      return res.status(400).json({ error: `Failed to update this user's following list` });
+    }
+    next();
+  });
+};
+
+exports.addFollower = async (req, res) => {
+  const uid = req.user._id;
+  const followId = req.body.followId;
+  User.findByIdAndUpdate(followId, { $push: { followers: uid } }, (err, result) => {
+    if (err) {
+      return res.status(400).json({ error: `Failed to update the other user's follower list` });
+    }
+  });
+  return res.status(200).json({ message: `Successfully followed user` });
 };
