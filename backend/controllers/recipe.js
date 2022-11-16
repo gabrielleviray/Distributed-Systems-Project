@@ -1,4 +1,5 @@
 const Recipe = require('../models/Recipe');
+const redisHelper = require('../helpers/redis');
 
 exports.addRecipe = async (req, res) => {
   if (!req.body.title || !req.body.time || !req.body.ingredients || !req.body.directions) {
@@ -22,4 +23,11 @@ exports.addRecipe = async (req, res) => {
       return res.status(201).json({ message: 'Recipe sucessfully added' });
     }
   })
+};
+
+exports.getAllRecipes = async (req, res) => {
+  const recipes = await Recipe.find({}).select('-__v').sort({ createdAt: -1 });
+  const value = JSON.stringify(recipes);
+  redisHelper.set('recipe:all', value, 60);
+  return res.status(200).json(recipes);
 };

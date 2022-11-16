@@ -3,8 +3,12 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
 
+const redisMiddleware = require('./middleware/redis');
+const redisHelper = require('./helpers/redis');
+
 const authRoute = require('./routes/auth');
 const recipeRoute = require('./routes/recipe');
+const userRoute = require('./routes/user');
 
 const app = express();
 app.use(cors());
@@ -28,8 +32,12 @@ const connectDB = async () => {
 };
 connectDB();
 
+redisMiddleware.init();
+redisHelper.init();
+
 app.use('/api/auth', authRoute);
 app.use('/api/recipe', recipeRoute);
+app.use('/api/user', userRoute);
 
 const port = process.env.PORT || 5000;
 
