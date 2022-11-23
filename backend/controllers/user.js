@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const Recipe = require('../models/Recipe');
 const redisHelper = require('../helpers/redis');
+const { isAuth } = require('../helpers/auth');
 
 exports.getUserData = async (req, res) => {
   const uname = req.params.username;
@@ -22,6 +23,10 @@ exports.getUserData = async (req, res) => {
   const key = 'user:' + user.username;
   const value = JSON.stringify(userData);
   redisHelper.set(key, value, 60);
+  
+  if (await isAuth(req)) {
+    userData.isFolllowing = req.user.following.includes(user._id);
+  }
   return res.status(200).json(userData);
 };
 
