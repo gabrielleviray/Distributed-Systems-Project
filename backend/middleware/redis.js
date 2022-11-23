@@ -37,6 +37,7 @@ exports.checkCacheForUser = async (req, res, next) => {
     if (data) {
       const userData = JSON.parse(data);
       if (await isAuth(req)) {
+        userData.isMe = (req.user._id == userData.id);
         userData.isFollowing = req.user.following.includes(userData.id);
       }
       return res.status(200).json(userData);

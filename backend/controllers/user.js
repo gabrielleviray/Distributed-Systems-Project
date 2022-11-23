@@ -25,6 +25,7 @@ exports.getUserData = async (req, res) => {
   redisHelper.set(key, value, 60);
   
   if (await isAuth(req)) {
+    userData.isMe = (req.user._id == user._id.valueOf());
     userData.isFolllowing = req.user.following.includes(user._id);
   }
   return res.status(200).json(userData);
