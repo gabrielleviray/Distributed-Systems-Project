@@ -1,4 +1,5 @@
 const redis = require('redis');
+const { isAuth } = require('../helpers/auth');
 
 let client;
 
@@ -34,7 +35,12 @@ exports.checkCacheForUser = async (req, res, next) => {
     const key = 'user:' + req.params.username;
     const data = await client.get(key);
     if (data) {
-      return res.status(200).json(JSON.parse(data));
+      const userData = JSON.parse(data);
+      if (await isAuth(req)) {
+        userData.isMe = (req.user._id == userData.id);
+        userData.isFollowing = req.user.following.includes(userData.id);
+      }
+      return res.status(200).json(userData);
     }
   } catch (err) {
     console.log(err);
