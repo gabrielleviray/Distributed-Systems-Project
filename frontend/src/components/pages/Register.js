@@ -1,4 +1,4 @@
-import React, { useState} from 'react'
+import React, { useState } from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import M from 'materialize-css'
 
@@ -32,7 +32,7 @@ const Register = ()=> {
                 }
                 else{
                     M.toast({html: data.message, classes: "#43a047 green darken-1"})
-                    history.push('/login')
+                    history('/login')
                 }
         }).catch(err=>{
             console.log(err)
@@ -75,7 +75,7 @@ const Register = ()=> {
                 onChange={(e)=>setPassword(e.target.value)}
                 />
 
-                <button class="btn waves-effect waves-light #ff8a65 deep-orange lighten-2" onClick={()=>PostData()}>
+                <button className="btn waves-effect waves-light #ff8a65 deep-orange lighten-2" onClick={()=>PostData()}>
                     Register
                 </button>
                 <h5>
