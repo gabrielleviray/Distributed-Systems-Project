@@ -29,7 +29,7 @@ const AddRecipe = () =>{
             }
             else{
                 M.toast({html: "Successfully added a recipe!", classes: "#43a047 green darken-1"})
-                history('/login')
+                history('/')
             }
         })
         .catch(err=>{
@@ -73,7 +73,7 @@ const AddRecipe = () =>{
             value={directions}
             onChange={(e)=>setDirections(e.target.value)}
             />
-        <button className ="btn waves-effect waves-light #ff8a65 deep-orange lighten-2" onClick={()=>PostUserRecipe}>
+        <button className ="btn waves-effect waves-light #ff8a65 deep-orange lighten-2" onClick={()=>PostUserRecipe()}>
                 Submit Recipe
             </button>
         </div>
