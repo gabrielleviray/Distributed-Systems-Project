@@ -17,7 +17,7 @@ const Routing = () => {
   const history = useNavigate()
   const {state, dispatch} = useContext(AuthContext)
   useEffect(()=>{
-    const user = JSON.stringify(localStorage.getItem("user"))
+    const user = JSON.parse(localStorage.getItem("user"))
 
     //console.log(typeof(user), user)
     // if there is a user, push to home screen else redirect to login screen
@@ -36,7 +36,7 @@ const Routing = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        {/* <Route path="/profile" element={<UserProfile />} /> */}
+        <Route path="/profile" element={<Profile />} />
         <Route path="/addRecipe" element={<AddRecipe />} />
         <Route path="/user/:username" element= {<UserProfile />} />
       </Routes>
