@@ -8,6 +8,7 @@ import Register from './components/pages/Register'
 import Profile from './components/pages/Profile'
 import AddRecipe from './components/pages/AddRecipe'
 import { reducer, initialState } from './reducers/useReducer'
+import UserProfile from './components/pages/UserProfile'
 
 export const AuthContext = createContext()
 
@@ -35,8 +36,9 @@ const Routing = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path ="/profile" element={<Profile />} />
         <Route path="/addRecipe" element={<AddRecipe />} />
+        <Route path="/user/:username" element= {<UserProfile />} />
       </Routes>
 
   )

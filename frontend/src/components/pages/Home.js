@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, {  useEffect } from 'react'
+import { useRecipesContext } from "../../reducers/useRecipes"
 
 // components
 import RecipeDetails from '../RecipeDetails'
@@ -57,7 +58,10 @@ import RecipeDetails from '../RecipeDetails'
 
 const Home = () => {
     // create states
-    const [allRecipes, setAllRecipes] = useState(null)
+    // no longer need: const [allRecipes, setAllRecipes] = useState(null)
+
+    // invoke hook
+    const {recipes, dispatch} = useRecipesContext()
 
     useEffect(() => {
         const fetchAllRecipes = async () => {
@@ -66,7 +70,9 @@ const Home = () => {
 
             
             if (response.ok){
-                setAllRecipes(json)
+                // no longer need:setAllRecipes(json)
+                dispatch({type: 'SET_RECIPES', payload: json})
+                // console.log(json)
             }
         }
 
@@ -76,7 +82,7 @@ const Home = () => {
     return(
         <div className="home">
             <div className= "recipes">
-                { allRecipes && allRecipes.map((recipe)=>(
+                { recipes && recipes.map((recipe)=>(
                     <RecipeDetails key={recipe._id} recipe={recipe}/>
                     // <p key={recipe._id}>{recipe.author}</p>
                 ))}

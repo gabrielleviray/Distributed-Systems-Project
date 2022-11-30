@@ -1,4 +1,10 @@
+/* google font */
 @import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap');
+
+:root {
+  --primary: #ff8a65;
+  --error: #e7195a;
+}
 
 a{
   color: black !important;
@@ -48,9 +54,39 @@ a{
 
 
 .home-card{
-  max-width: 500px;
+  max-width: 1000px;
   height: max-content;
   margin: 26px auto;
+  padding-left: 50px;
+}
+
+.home-card p{
+  margin: 0;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.home-card h4 {
+  margin: 0 0 10 px 0;
+  font-size: 1.7em;
+  /* color:var(--primary); */
+}
+
+.home-card strong {
+  margin: 0 0 10 px 0;
+  font-size: 1.2em;
+  /* color:var(--primary); */
+}
+
+.home-card span {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  background: #f1f1f1;
+  padding: 6px;
+  border-radius: 50%;
+  color: #333;
 }
 
 #toast-container{

@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import M from 'materialize-css'
 import { useNavigate } from 'react-router-dom'
+import { useRecipesContext } from "../../reducers/useRecipes"
 
 const AddRecipe = () =>{
+    const { dispatch } = useRecipesContext()
+
     const history = useNavigate()
     const [title, setTitle] = useState("")
     const [time, setTime] = useState("")
@@ -29,6 +32,8 @@ const AddRecipe = () =>{
             }
             else{
                 M.toast({html: "Successfully added a recipe!", classes: "#43a047 green darken-1"})
+                dispatch({type:'CREATE_RECIPE', payload: data})
+                // console.log(data)
                 history('/')
             }
         })
