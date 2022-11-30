@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
+import { useRecipesContext } from "../../reducers/useRecipes"
 
 // components
 import ProfileDetails from '../ProfileDetails'
 
 const Profile = ()=> {
     const [myRecipes, setMyRecipes] = useState(null)
+    const {recipes, dispatch} = useRecipesContext()
     // const [profile, setProfile] = useState([])
     // // const [name, setName] = useState([])
 

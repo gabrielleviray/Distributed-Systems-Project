@@ -1,14 +1,17 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { AuthContext } from '../../App'
 import { useParams } from 'react-router-dom'
-
-
+import RecipeDetails from '../RecipeDetails'
 
 const UserProfile = ()=> {
     const {state, dispatch} = useContext(AuthContext)
-    const [profile, setProfile] = useState([])
+    const [userId, setUserId] = useState(0);
+    const [name, setName] = useState('');
+    const [recipes, setRecipes] = useState([]);
+    const [isFollowing, setIsFollowing] = useState(false);
+    const [isMe, setIsMe] = useState(false);
     const{username} = useParams()
-    console.log(username)
+    // console.log(username)
 
     useEffect(()=>{
         fetch(`/api/user/${username}`, {
@@ -17,8 +20,12 @@ const UserProfile = ()=> {
             }
         }).then(res=>res.json())
         .then(result=>{
-            console.log(result.recipes)
-            setProfile(result)
+            // console.log(result)
+            setUserId(result.id);
+            setName(result.name);
+            setRecipes(result.recipes);
+            setIsFollowing(result.isFollowing);
+            setIsMe(result.isMe);
         })
     },[])
 
@@ -56,7 +63,20 @@ const UserProfile = ()=> {
         //             </div>
         // </div>
         <div>
-            <h4>profile page</h4>
+            <h4>{name}</h4>
+            <div>
+                {recipes.length > 0 ? (
+                    <div className= "recipes">
+                        {recipes.map((recipe) => (
+                            <RecipeDetails key={recipe._id} recipe={recipe}/>
+                        ))}
+                    </div>
+                ) : (
+                    <div>
+                        No recipes to show.
+                    </div>
+                )}
+            </div>
         </div>
     )
 }

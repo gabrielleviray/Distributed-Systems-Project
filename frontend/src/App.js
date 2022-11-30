@@ -23,7 +23,7 @@ const Routing = () => {
     // if there is a user, push to home screen else redirect to login screen
     if(user){
       dispatch({type:"USER", payload:user})
-      history('/')
+      // history('/')
     } else {
       history('/login')
     }
@@ -36,7 +36,7 @@ const Routing = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path ="/profile" element={<Profile />} />
+        {/* <Route path="/profile" element={<UserProfile />} /> */}
         <Route path="/addRecipe" element={<AddRecipe />} />
         <Route path="/user/:username" element= {<UserProfile />} />
       </Routes>
