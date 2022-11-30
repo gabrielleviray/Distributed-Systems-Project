@@ -62,8 +62,8 @@ const UserProfile = ()=> {
         //                 <img className='recipe_posts_item' src="https://images.unsplash.com/photo-1444021465936-c6ca81d39b84?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"/>
         //             </div>
         // </div>
-        <div>
-            <h4>{name}</h4>
+        <div style={{maxWidth:"550px", margin:"0px auto"}}>
+            <h4 align="center">{name}'s Recipes</h4>
             <div>
                 {recipes.length > 0 ? (
                     <div className= "recipes">

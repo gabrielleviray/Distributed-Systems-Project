@@ -54,10 +54,13 @@ a{
 
 
 .home-card{
-  max-width: 1000px;
+  max-width: 550px;
   height: max-content;
   margin: 26px auto;
   padding-left: 50px;
+  padding-bottom: 20px;
+  padding-top: 10px;
+  padding-right: 50px
 }
 
 .home-card p{

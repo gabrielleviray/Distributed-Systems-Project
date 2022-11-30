@@ -45,36 +45,41 @@ const AddRecipe = () =>{
     return(
         <div className="card input-filed"
         style={{
-            margin: "10px auto",
-            maxWidth: "500px",
+            margin: "250px auto",
+            maxWidth: "700px",
             padding: "20px",
-            textAlign:"center"
+            textAlign:"center",
+            
         }}
         >
+        <div className = "food-blog-logo">
+            <h3>Post Your Recipe</h3>
+        </div>
+
             <input 
             type="text" 
-            placeholder="title"
+            placeholder="Recipe Title"
             value={title}
             onChange={(e)=>setTitle(e.target.value)}
             />
 
             <input 
             type="text" 
-            placeholder="time"
+            placeholder="Total Recipe Time"
             value={time}
             onChange={(e)=>setTime(e.target.value)}
             />
 
             <input 
             type="text" 
-            placeholder="ingredients"
+            placeholder="Ingredients"
             value={ingredients}
             onChange={(e)=>setIngredients(e.target.value)}
             />
             
             <input 
             type="text" 
-            placeholder="directions"
+            placeholder="Directions"
             value={directions}
             onChange={(e)=>setDirections(e.target.value)}
             />
