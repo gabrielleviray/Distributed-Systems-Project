@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const RecipeDetails = ({ recipe }) => {
     
     
@@ -12,7 +14,7 @@ const RecipeDetails = ({ recipe }) => {
             <p><strong> Time: </strong> {recipe.time} </p>
             <p><strong> Ingredients: </strong> {recipe.ingredients} </p>
             <p><strong> Directions: </strong> {recipe.directions} </p>
-            <p align="right">posted by {recipe.author} on {recipe.createdAt} </p>
+            <Link to={"/user/"+recipe.username}><p align="right">posted by {recipe.author} on {recipe.createdAt} </p></Link>
             {/* <span onClick={onSubmit}>delete</span> */}
         </div>
     )
