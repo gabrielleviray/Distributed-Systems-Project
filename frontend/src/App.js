@@ -18,7 +18,6 @@ const Routing = () => {
   const {state, dispatch} = useContext(AuthContext)
   useEffect(()=>{
     const user = JSON.parse(localStorage.getItem("user"))
-
     //console.log(typeof(user), user)
     // if there is a user, push to home screen else redirect to login screen
     if(user){

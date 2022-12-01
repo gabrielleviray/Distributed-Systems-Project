@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import M from 'materialize-css'
 import { useNavigate } from 'react-router-dom'
 import { useRecipesContext } from "../../reducers/useRecipes"
-
+// import image from "../../images/addRecipeBackground.jpg"
+import image from "../../images/recipebook.jpg"
+// import image from "../../images/cookbook.jpg"
 const AddRecipe = () =>{
     const { dispatch } = useRecipesContext()
 
@@ -43,18 +45,20 @@ const AddRecipe = () =>{
     }
 
     return(
+        <div style={{backgroundImage: `url(${image})`, position:"fixed", backgroundSize:"cover", minWidth: "100%",minHeight:"100%", backgroundPosition:"center"}}>
+        
         <div className="card input-filed"
         style={{
             margin: "250px auto",
             maxWidth: "700px",
-            padding: "20px",
-            textAlign:"center",
+            padding: "100px",
+            textAlign:"center"
             
         }}
         >
-        <div className = "food-blog-logo">
-            <h3>Post Your Recipe</h3>
-        </div>
+        <div className = "food-blog-logo" >
+            <h1>Post Your Recipe</h1>
+        </div >
 
             <input 
             type="text" 
@@ -87,7 +91,7 @@ const AddRecipe = () =>{
                 Submit Recipe
             </button>
         </div>
-        
+        </div>
     )
 }
 
