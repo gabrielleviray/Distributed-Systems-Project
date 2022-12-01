@@ -49,7 +49,7 @@ const Login = ()=> {
                 <h2 className= "food-blog-logo">Food Blog</h2>
 
                 <input
-                type="text"
+                type="email"
                 placeholder="email"
                 value={email}
                 onChange={(e)=>setEmail(e.target.value)}

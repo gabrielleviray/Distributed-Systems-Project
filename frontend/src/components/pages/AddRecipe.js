@@ -81,12 +81,27 @@ const AddRecipe = () =>{
             onChange={(e)=>setIngredients(e.target.value)}
             />
             
-            <input 
+            {/* <input 
             type="text" 
             placeholder="Directions"
             value={directions}
             onChange={(e)=>setDirections(e.target.value)}
-            />
+            /> */}
+
+            <textarea style={{
+                resize:"none",
+                height: "100px",
+                width: "500px",
+                padding:"5px",
+                fontSize:"16px",
+                borderColor: "#808080",
+                boxShadow:"#999"}} 
+                placeholder="Directions"
+                value={directions}
+                onChange={(e)=>setDirections(e.target.value)}>
+            </textarea>
+
+
         <button className ="btn waves-effect waves-light #ff8a65 deep-orange lighten-2" onClick={()=>PostUserRecipe()}>
                 Submit Recipe
             </button>
