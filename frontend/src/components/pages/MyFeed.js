@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import RecipeDetails from '../RecipeDetails';
+import config from '../../config';
 
 const MyFeed = () => {
     const [recipes, setRecipes] = useState([]);
@@ -7,7 +8,7 @@ const MyFeed = () => {
     const [error, setError] = useState('');
 
     useEffect(() => {
-        fetch('/api/user/following-recipes', {
+        fetch(`${config.ApiUrl}/api/user/following-recipes`, {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('jwt')
             }

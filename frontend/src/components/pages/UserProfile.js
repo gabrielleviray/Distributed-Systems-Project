@@ -3,6 +3,7 @@ import M from 'materialize-css'
 import { AuthContext } from '../../App'
 import { useParams } from 'react-router-dom'
 import RecipeDetails from '../RecipeDetails'
+import config from '../../config';
 
 const UserProfile = ()=> {
     const {state, dispatch} = useContext(AuthContext)
@@ -17,7 +18,7 @@ const UserProfile = ()=> {
     // console.log(username)
 
     useEffect(()=>{
-        fetch(`/api/user/${username}`, {
+        fetch(`${config.ApiUrl}/api/user/${username}`, {
             headers:{
                 "Authorization": "Bearer " + localStorage.getItem("jwt")
             }
@@ -39,7 +40,7 @@ const UserProfile = ()=> {
     }, [username])
 
     const follow = () => {
-        fetch(`/api/user/follow`, {
+        fetch(`${config.ApiUrl}/api/user/follow`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -60,7 +61,7 @@ const UserProfile = ()=> {
     }
 
     const unfollow = () => {
-        fetch(`/api/user/unfollow`, {
+        fetch(`${config.ApiUrl}/api/user/unfollow`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -94,8 +95,8 @@ const UserProfile = ()=> {
                             <div style={{display:"flex", justifyContent:"space-between", width:"95%", paddingBottom:"15px" }}>
                               
                                     <h6 >{recipes.length} recipes </h6>
-                                    <h6 >20 following </h6>
-                                    <h6 >20 followers</h6>
+                                    {/* <h6 >20 following </h6>
+                                    <h6 >20 followers</h6> */}
                             </div>
                             <div align="center">
                             {!isMe ? (
