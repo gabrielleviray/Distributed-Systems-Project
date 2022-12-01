@@ -35,6 +35,14 @@ const NavBar = () =>{
       <nav>
       <div className="nav-wrapper white">
         <Link to={state?"/":"/login"}className="food-blog-font left">Food Blog</Link>
+        {state ? (
+          <ul id="nav-mobile" className="left">
+            <li><Link to="/">All Recipes</Link></li>
+            <li><Link to="/myFeed">My Feed</Link></li>
+          </ul>
+        ) : (
+          <></>
+        )}
         <ul id="nav-mobile" className="right">
           {navBarList()}
         </ul>
