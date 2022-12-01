@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../App'
+import M from "materialize-css"
 
 const NavBar = () =>{
   const {state, dispatch} = useContext(AuthContext)
@@ -17,6 +18,7 @@ const NavBar = () =>{
                     localStorage.clear()
                     dispatch({type:"CLEAR"})
                     history('/login')
+                    M.toast({html: "You've successfully logged out.", classes: "#43a047 green darken-1"})
                   }}
                   >
               Logout

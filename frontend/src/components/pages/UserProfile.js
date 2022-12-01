@@ -84,18 +84,36 @@ const UserProfile = ()=> {
         <>
             {!loading && !error ? (
                 <div style={{maxWidth:"550px", margin:"0px auto"}}>
-                    <h4 align="center">{name}'s Recipes</h4>
-                    {!isMe ? (
+                    <div style={{ display: "flex", justifyContent:"space-around", margin:"18px 0px", borderBottom:"1px solid grey", }}>
                         <div>
-                            {isFollowing ? (
-                                <button onClick={unfollow}>Unfollow</button>
-                            ) : (
-                                <button onClick={follow}>Follow</button>
-                            )}
+                            <img style={{width:"160px", height:"160px", borderRadius:"80", marginTop: "20px"}}
+                            src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"/>
                         </div>
-                    ) : (
-                        <></>
-                    )}
+                        <div>
+                            <h4 align="center">{name}'s Recipes</h4>
+                            <div style={{display:"flex", justifyContent:"space-between", width:"95%", paddingBottom:"15px" }}>
+                              
+                                    <h6 >{recipes.length} recipes </h6>
+                                    <h6 >20 following </h6>
+                                    <h6 >20 following</h6>
+                            </div>
+                            <div align="center">
+                            {!isMe ? (
+                                <div>
+                                    {isFollowing ? (
+                                        // <button onClick={unfollow}>Unfollow</button>
+                                        <button className ="btn waves-effect waves-light #9e9e9e grey" onClick={unfollow}>Unfollow</button>
+                                    ) : (
+                                        <button className ="btn waves-effect waves-light #ff8a65 deep-orange lighten-2" onClick={follow}>Follow</button>
+                                    )}
+                                </div>
+                                ) : (
+                                    <></>
+                                )}
+                            </div>
+
+                        </div>
+                    </div>
                     <div>
                         {recipes && recipes.length > 0 ? (
                             <div className= "recipes">

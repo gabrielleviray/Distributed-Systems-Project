@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import M from 'materialize-css'
+import image from "../../images/food.jpg"
 
 const Register = ()=> {
     const history = useNavigate()
@@ -41,10 +42,14 @@ const Register = ()=> {
     }
 
     return(
+        <div style={{backgroundImage: `url(${image})`, position:"fixed", backgroundSize:"cover", minWidth: "100%",minHeight:"100%", backgroundPosition:"center"}}>
         <div className="signin-template-card">
             <div className="card user-signin-card input-field">
-                <h2 className="food-blog-logo">Food Blog</h2>
-
+                {/* <h2 className="food-blog-logo">Food Blog</h2> */}
+                {/* <h4>Learn, Share, and Create Recipes!</h4> */}
+                <h2 className="food-blog-logo">Registration</h2>
+                <h5><i>Food blog</i> is a web application for users who want to share their recipes and discover new foods! In addition,
+                users are able to keep track of their own recipes on their account and follow other users!</h5> 
                 <input
                 type="text"
                 placeholder="full name"
@@ -61,7 +66,7 @@ const Register = ()=> {
                 />
 
                 <input
-                type="text"
+                type="email"
                 placeholder="email"
                 value={email}
                 onChange={(e)=>setEmail(e.target.value)}
@@ -69,7 +74,7 @@ const Register = ()=> {
 
 
                 <input
-                type="text"
+                type="password"
                 placeholder="password"
                 value={password}
                 onChange={(e)=>setPassword(e.target.value)}
@@ -83,6 +88,7 @@ const Register = ()=> {
                 </h5>
             </div>
   
+        </div>
         </div>
     )
 }
