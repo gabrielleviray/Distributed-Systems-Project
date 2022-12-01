@@ -7,6 +7,7 @@ const RecipeDetails = ({ recipe }) => {
     //     const response = await fetch('/api/recipe/all')
     // }
 
+    
     return(
 
         <div className = "card home-card" >

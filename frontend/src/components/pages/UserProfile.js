@@ -82,7 +82,7 @@ const UserProfile = ()=> {
         //             </div>
         // </div>
         
-        <div style={{maxWidth:"550px", margin:"0px auto" }}>
+        <div style={{maxWidth:"1000px", margin:"20px auto" }}>
                 <div style={{ display: "flex", justifyContent:"space-around", margin:"18px 0px", borderBottom:"1px solid grey", }}>
                     <div>
                         <img style={{width:"160px", height:"160px", borderRadius:"80", marginTop: "20px"}}
