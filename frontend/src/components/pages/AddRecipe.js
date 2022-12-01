@@ -47,10 +47,10 @@ const AddRecipe = () =>{
         <div style={{backgroundImage: `url(${image})`, position:"fixed", backgroundSize:"cover", minWidth: "100%",minHeight:"100%", backgroundPosition:"center"}}>
         <div className="card input-filed"
         style={{
-            margin: "250px auto",
+            margin: "125px auto",
             maxWidth: "700px",
             padding: "100px",
-            textAlign:"center",
+            textAlign:"center"
             
         }}
         >
