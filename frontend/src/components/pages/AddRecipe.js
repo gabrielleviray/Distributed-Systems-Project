@@ -3,6 +3,7 @@ import M from 'materialize-css'
 import { useNavigate } from 'react-router-dom'
 import { useRecipesContext } from "../../reducers/useRecipes"
 import image from "../../images/recipebook.jpg"
+import config from '../../config';
 
 const AddRecipe = () =>{
     const { dispatch } = useRecipesContext()
@@ -14,7 +15,7 @@ const AddRecipe = () =>{
     const [directions, setDirections] = useState("")
 
     const PostUserRecipe = () =>{
-        fetch("/api/recipe/create", {
+        fetch(`${config.ApiUrl}/api/recipe/create`, {
             method:"post",
             headers:{
                 "Content-Type":"application/json",

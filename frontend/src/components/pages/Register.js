@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import M from 'materialize-css'
 import image from "../../images/food.jpg"
+import config from '../../config';
 
 const Register = ()=> {
     const history = useNavigate()
@@ -15,7 +16,7 @@ const Register = ()=> {
             M.toast({html: "Your email is invalid.", classes: "#b71c1c red darken-4"})
             return
         }
-        fetch("/api/auth/register", {
+        fetch(`${config.ApiUrl}/api/auth/register`, {
             method:"post",
             headers:{
                 "Content-Type":"application/json"

@@ -1,6 +1,7 @@
 import React, {  useEffect } from 'react'
 import { useRecipesContext } from "../../reducers/useRecipes"
 import { Link } from 'react-router-dom'
+import config from '../../config';
 
 // components
 import RecipeDetails from '../RecipeDetails'
@@ -66,7 +67,7 @@ const Home = () => {
 
     useEffect(() => {
         const fetchAllRecipes = async () => {
-            const response = await fetch('/api/recipe/all')
+            const response = await fetch(`${config.ApiUrl}/api/recipe/all`)
             const json = await response.json() // pass the json, json = array of objects where each object represents a recipe
 
             
