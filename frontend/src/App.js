@@ -9,6 +9,7 @@ import Profile from './components/pages/Profile'
 import AddRecipe from './components/pages/AddRecipe'
 import { reducer, initialState } from './reducers/useReducer'
 import UserProfile from './components/pages/UserProfile'
+import MyFeed from './components/pages/MyFeed'
 
 export const AuthContext = createContext()
 
@@ -39,6 +40,7 @@ const Routing = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/addRecipe" element={<AddRecipe />} />
         <Route path="/user/:username" element= {<UserProfile />} />
+        <Route path="/myFeed" element= {<MyFeed />} />
       </Routes>
 
   )

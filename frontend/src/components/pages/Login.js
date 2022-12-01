@@ -2,6 +2,7 @@ import React, { useState, useContext} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import M from 'materialize-css'
 import { AuthContext} from '../../App.js'
+import image from "../../images/food.jpg"
 
 const Login = ()=> {
     const {state, dispatch} = useContext(AuthContext)
@@ -43,13 +44,14 @@ const Login = ()=> {
     }
 
     return(
-
-        <div className="signin-template-card">
+        <div style={{backgroundImage: `url(${image})`, position:"fixed", backgroundSize:"cover", minWidth: "100%",minHeight:"100%", backgroundPosition:"center"}}>
+        <div className="signin-template-card" >
             <div className="card user-signin-card input-field">
-                <h2 className= "food-blog-logo">Food Blog</h2>
+                <h2 className= "food-blog-logo">Login</h2>
+                <h5><strong>Learn, Share, and Create Recipes! </strong></h5> 
 
                 <input
-                type="text"
+                type="email"
                 placeholder="email"
                 value={email}
                 onChange={(e)=>setEmail(e.target.value)}
@@ -57,7 +59,7 @@ const Login = ()=> {
 
 
                 <input
-                type="text"
+                type="password"
                 placeholder="password"
                 value={password}
                 onChange={(e)=>setPassword(e.target.value)}
@@ -71,6 +73,7 @@ const Login = ()=> {
                 </h5>
             </div>
   
+        </div>
         </div>
     )
 }

@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react'
+import M from 'materialize-css'
 import { AuthContext } from '../../App'
 import { useParams } from 'react-router-dom'
 import RecipeDetails from '../RecipeDetails'
@@ -10,6 +11,8 @@ const UserProfile = ()=> {
     const [recipes, setRecipes] = useState([]);
     const [isFollowing, setIsFollowing] = useState(false);
     const [isMe, setIsMe] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
     const{username} = useParams()
     // console.log(username)
 
@@ -21,63 +24,114 @@ const UserProfile = ()=> {
         }).then(res=>res.json())
         .then(result=>{
             // console.log(result)
-            setUserId(result.id);
-            setName(result.name);
-            setRecipes(result.recipes);
-            setIsFollowing(result.isFollowing);
-            setIsMe(result.isMe);
+            if (result.error) {
+                setError(result.error);
+                setLoading(false);
+            } else {
+                setUserId(result.id);
+                setName(result.name);
+                setRecipes(result.recipes);
+                setIsFollowing(result.isFollowing);
+                setIsMe(result.isMe);
+                setLoading(false);
+            }
         })
-    },[])
+    }, [username])
+
+    const follow = () => {
+        fetch(`/api/user/follow`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('jwt')
+            },
+            body: JSON.stringify({
+                followId: userId
+            })
+        }).then(res => res.json())
+        .then(data => {
+            if (data.error) {
+                M.toast({html: 'Something went wrong. Please try again later.', classes: "#b71c1c red darken-4"})
+            } else {
+                M.toast({html: `Followed ${name}`, classes: "#43a047 green darken-1"})
+                setIsFollowing(true);
+            }
+        })
+    }
+
+    const unfollow = () => {
+        fetch(`/api/user/unfollow`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('jwt')
+            },
+            body: JSON.stringify({
+                unfollowId: userId
+            })
+        }).then(res => res.json())
+        .then(data => {
+            if (data.error) {
+                M.toast({html: 'Something went wrong. Please try again later.', classes: "#b71c1c red darken-4"})
+            } else {
+                M.toast({html: `Unfollowed ${name}`, classes: "#43a047 green darken-1"})
+                setIsFollowing(false);
+            }
+        })
+    }
 
     return(
-        // <div style={{maxWidth:"550px", margin:"0px auto"}}>
-        //     <div style={{
-        //         display: "flex",
-        //         justifyContent:"space-around",
-        //         margin:"18px 0px",
-        //         borderBottom:"1px solid grey"
-        //     }}>
-        //         <div>
-        //             <img style={{width:"160px", height:"160px", borderRadius:"80"}}
-        //             src="https://images.unsplash.com/photo-1444021465936-c6ca81d39b84?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"/>
-        //         </div>
-        //         <div>
-        //             <h4>gabrielle viray</h4>
-        //             <div style={{display:"flex", justifyContent:"space-between", width:"110%"}}>
-        //                 <ul>
-        //                     <h6>20 recipes</h6>
-        //                     <h6>20 following</h6>
-        //                     <h6>20 following</h6>
-        //                 </ul>
-        //             </div>
-        //         </div>
-            
-        //     </div>
-        //     <div className="recipe_posts_gallery">
-        //                 <img className="recipe_posts_item" src="https://images.unsplash.com/photo-1444021465936-c6ca81d39b84?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"/>
-        //                 <img className='recipe_posts_item' src="https://images.unsplash.com/photo-1444021465936-c6ca81d39b84?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"/>
-        //                 <img className='recipe_posts_item' src="https://images.unsplash.com/photo-1444021465936-c6ca81d39b84?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"/>
-        //                 <img className='recipe_posts_item' src="https://images.unsplash.com/photo-1444021465936-c6ca81d39b84?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"/>
-        //                 <img className='recipe_posts_item' src="https://images.unsplash.com/photo-1444021465936-c6ca81d39b84?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"/>
-        //                 <img className='recipe_posts_item' src="https://images.unsplash.com/photo-1444021465936-c6ca81d39b84?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"/>
-        //             </div>
-        // </div>
-        <div style={{maxWidth:"550px", margin:"0px auto"}}>
-            <h4 align="center">{name}'s Recipes</h4>
-            <div>
-                {recipes.length > 0 ? (
-                    <div className= "recipes">
-                        {recipes.map((recipe) => (
-                            <RecipeDetails key={recipe._id} recipe={recipe}/>
-                        ))}
+        <>
+            {!loading && !error ? (
+                <div style={{maxWidth:"550px", margin:"0px auto"}}>
+                    <div style={{ display: "flex", justifyContent:"space-around", margin:"18px 0px", borderBottom:"1px solid grey", }}>
+                        <div>
+                            <img style={{width:"160px", height:"160px", borderRadius:"80", marginTop: "20px"}}
+                            src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"/>
+                        </div>
+                        <div>
+                            <h4 align="center">{name}'s Recipes</h4>
+                            <div style={{display:"flex", justifyContent:"space-between", width:"95%", paddingBottom:"15px" }}>
+                              
+                                    <h6 >{recipes.length} recipes </h6>
+                                    <h6 >20 following </h6>
+                                    <h6 >20 followers</h6>
+                            </div>
+                            <div align="center">
+                            {!isMe ? (
+                                <div>
+                                    {isFollowing ? (
+                                        // <button onClick={unfollow}>Unfollow</button>
+                                        <button className ="btn waves-effect waves-light #9e9e9e grey" onClick={unfollow}>Unfollow</button>
+                                    ) : (
+                                        <button className ="btn waves-effect waves-light #ff8a65 deep-orange lighten-2" onClick={follow}>Follow</button>
+                                    )}
+                                </div>
+                                ) : (
+                                    <></>
+                                )}
+                            </div>
+
+                        </div>
                     </div>
-                ) : (
                     <div>
-                        No recipes to show.
+                        {recipes && recipes.length > 0 ? (
+                            <div className= "recipes">
+                                {recipes.map((recipe) => (
+                                    <RecipeDetails key={recipe._id} recipe={recipe}/>
+                                ))}
+                            </div>
+                        ) : (
+                            <div>
+                                No recipes to show.
+                            </div>
+                        )}
                     </div>
-                )}
-            </div>
-        </div>
+                </div>
+            ) : (
+                <div>{error}</div>
+            )}
+        </>
     )
 }
 

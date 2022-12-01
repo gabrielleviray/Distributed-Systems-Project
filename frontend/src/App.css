@@ -1,5 +1,7 @@
 /* google font */
 @import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+
 
 :root {
   --primary: #ff8a65;
@@ -15,6 +17,7 @@ a{
   cursive;
   font-size: 45px;
   margin-left: 30px;
+  margin-right: 30px;
 }
 
 .food-blog-logo{
@@ -33,6 +36,14 @@ a{
 
 .signin-template-card {
   margin-top: 100px;
+  margin-right: 0px;
+  /* display: flex;
+  position: absolute;
+  top: 300px;
+  left: 0;
+  height: 50%;
+  width: 100%; */
+
 }
 
 /* label underline focus color */
@@ -40,6 +51,22 @@ a{
   border-bottom: 1px solid #ff8a65 !important;
   box-shadow: 0 1px 0 0 #ff8a65 !important;
 }
+
+.input-field input[type=email]:focus {
+    border-bottom: 1px solid #ff8a65 !important;
+    box-shadow: 0 1px 0 0 #ff8a65 !important;
+  }
+
+  .input-field input[type=password]:focus {
+    border-bottom: 1px solid #ff8a65 !important;
+    box-shadow: 0 1px 0 0 #ff8a65 !important;
+  }
+
+  .textarea {
+    height: auto;
+    outline:#ff8a65 !important;
+  }
+
 
 .recipe_posts_gallery{
   display: flex;
@@ -93,7 +120,18 @@ a{
 }
 
 #toast-container{
-  top: 30px !important;
-  right: 20px !important;
-  left: auto !important
+
+  /* top: 30px !important; */
+  /* right: 20px !important; */
+  /* left: auto !important */
+  left: 50%;
+  position: fixed;
+  transform: translate(-50%, 0px);
+  z-index: 9999;
+}
+
+.headline {
+    font-family: 'Helvetica Neue';
+    font-size: 23px;
+    margin-left: 30px;
 }

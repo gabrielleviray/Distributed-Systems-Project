@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import M from 'materialize-css'
 import { useNavigate } from 'react-router-dom'
 import { useRecipesContext } from "../../reducers/useRecipes"
+import image from "../../images/recipebook.jpg"
 
 const AddRecipe = () =>{
     const { dispatch } = useRecipesContext()
@@ -43,17 +44,18 @@ const AddRecipe = () =>{
     }
 
     return(
+        <div style={{backgroundImage: `url(${image})`, position:"fixed", backgroundSize:"cover", minWidth: "100%",minHeight:"100%", backgroundPosition:"center"}}>
         <div className="card input-filed"
         style={{
             margin: "250px auto",
             maxWidth: "700px",
-            padding: "20px",
+            padding: "100px",
             textAlign:"center",
             
         }}
         >
         <div className = "food-blog-logo">
-            <h3>Post Your Recipe</h3>
+            <h1>Post Your Recipe</h1>
         </div>
 
             <input 
@@ -77,15 +79,30 @@ const AddRecipe = () =>{
             onChange={(e)=>setIngredients(e.target.value)}
             />
             
-            <input 
+            {/* <input 
             type="text" 
             placeholder="Directions"
             value={directions}
             onChange={(e)=>setDirections(e.target.value)}
-            />
+            /> */}
+
+            <textarea style={{
+                resize:"none",
+                height: "100px",
+                width: "500px",
+                padding:"5px",
+                fontSize:"16px",
+                borderColor: "#808080",
+                boxShadow:"#999"}} 
+                placeholder="Directions"
+                value={directions}
+                onChange={(e)=>setDirections(e.target.value)}>
+            </textarea>
+
         <button className ="btn waves-effect waves-light #ff8a65 deep-orange lighten-2" onClick={()=>PostUserRecipe()}>
                 Submit Recipe
-            </button>
+        </button>
+        </div>
         </div>
         
     )
