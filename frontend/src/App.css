@@ -1,38 +1,99 @@
-.App {
+/* google font */
+@import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap');
+
+:root {
+  --primary: #ff8a65;
+  --error: #e7195a;
+}
+
+a{
+  color: black !important;
+}
+
+.food-blog-font{
+  font-family: 'Grand Hotel',
+  cursive;
+  font-size: 45px;
+  margin-left: 30px;
+}
+
+.food-blog-logo{
+  font-family: 'Grand Hotel',
+  cursive;
+  font-size: 100px;
+  margin-left: 30px;
+}
+
+.user-signin-card{
+  padding: 20px;
   text-align: center;
+  max-width: 800px;
+  margin: 12px auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.signin-template-card {
+  margin-top: 100px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* label underline focus color */
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid #ff8a65 !important;
+  box-shadow: 0 1px 0 0 #ff8a65 !important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.recipe_posts_gallery{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-wrap: wrap;
+  justify-content:space-around;
 }
 
-.App-link {
-  color: #61dafb;
+.recipe_posts_item{
+  width: 45%;
+  margin-bottom: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.home-card{
+  max-width: 550px;
+  height: max-content;
+  margin: 26px auto;
+  padding-left: 50px;
+  padding-bottom: 20px;
+  padding-top: 10px;
+  padding-right: 50px
+}
+
+.home-card p{
+  margin: 0;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.home-card h4 {
+  margin: 0 0 10 px 0;
+  font-size: 1.7em;
+  /* color:var(--primary); */
+}
+
+.home-card strong {
+  margin: 0 0 10 px 0;
+  font-size: 1.2em;
+  /* color:var(--primary); */
+}
+
+.home-card span {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  background: #f1f1f1;
+  padding: 6px;
+  border-radius: 50%;
+  color: #333;
+}
+
+#toast-container{
+  top: 30px !important;
+  right: 20px !important;
+  left: auto !important
 }

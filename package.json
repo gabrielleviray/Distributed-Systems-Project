@@ -1,0 +1,6 @@
+{
+  "proxy": "http://localhost:5000",
+  "dependencies": {
+    "node": "^19.1.0"
+  }
+}
