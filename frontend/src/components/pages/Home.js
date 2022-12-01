@@ -1,6 +1,6 @@
 import React, {  useEffect } from 'react'
 import { useRecipesContext } from "../../reducers/useRecipes"
-import { Link } from 'react-router-dom'
+import M from 'materialize-css'
 
 // components
 import RecipeDetails from '../RecipeDetails'
@@ -81,8 +81,9 @@ const Home = () => {
     }, [])
 
     return(
+
         <div className="home">
-            <h4 align="center">All Recipes</h4>
+            <h4 align="center">Recipes Feed</h4>
             <div className= "recipes">
                 { recipes && recipes.map((recipe)=>(
                     <RecipeDetails key={recipe._id} recipe={recipe}/>
@@ -90,6 +91,7 @@ const Home = () => {
                 ))}
             </div>
         </div>
+
     )
 }
 
