@@ -95,7 +95,7 @@ const UserProfile = ()=> {
                               
                                     <h6 >{recipes.length} recipes </h6>
                                     <h6 >20 following </h6>
-                                    <h6 >20 following</h6>
+                                    <h6 >20 followers</h6>
                             </div>
                             <div align="center">
                             {!isMe ? (
