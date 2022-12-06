@@ -91,7 +91,7 @@ const UserProfile = ()=> {
                         </div>
                         <div>
                             <h4 align="center">{name}'s Recipes</h4>
-                            <div style={{display:"flex", justifyContent:"space-between", width:"95%", paddingBottom:"15px" }}>
+                            <div style={{display:"flex", justifyContent:"space-between", width:"110%", paddingBottom:"15px" }}>
                               
                                     <h6 >{recipes.length} recipes </h6>
                                     <h6 >20 following </h6>

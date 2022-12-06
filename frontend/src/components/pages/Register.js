@@ -84,7 +84,7 @@ const Register = ()=> {
                     Register
                 </button>
                 <h5>
-                    <Link to= "/register">Already have an account?</Link>
+                    <Link to= "/login">Already have an account?</Link>
                 </h5>
             </div>
   
