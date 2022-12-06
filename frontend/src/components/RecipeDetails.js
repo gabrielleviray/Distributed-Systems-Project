@@ -22,7 +22,7 @@ const RecipeDetails = ({ recipe }) => {
             <p><strong> Time: </strong> {recipe.time} </p>
             <p><strong> Ingredients: </strong> {recipe.ingredients} </p>
             <p><strong> Directions: </strong> {recipe.directions} </p>
-            <Link to={"/user/"+recipe.username}><p align="right">posted by {recipe.author} on {Month}</p></Link>
+            <Link to={"/user/"+recipe.username}><p align="right">posted by {recipe.username} on {Month}</p></Link>
             {/* <span onClick={onSubmit}>delete</span> */}
         </div>
     )
