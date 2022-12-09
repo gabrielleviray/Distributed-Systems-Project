@@ -71,7 +71,7 @@ const Profile = ()=> {
                         <p key={myRecipe._id}>{myRecipe.author}</p>
                     ))} */}
                     <h4>gabrielle viray</h4>
-                    <div style={{display:"flex", justifyContent:"space-between", width:"110%"}}>
+                    <div style={{display:"flex", justifyContent:"space-between", width:"110%", paddingBottom:"15px" }}>
                         <ul>
                             <h6>20 recipes</h6>
                             <h6>20 following</h6>

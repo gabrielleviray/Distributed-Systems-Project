@@ -84,15 +84,15 @@ const UserProfile = ()=> {
     return(
         <>
             {!loading && !error ? (
-                <div style={{maxWidth:"550px", margin:"0px auto"}}>
+                <div style={{maxWidth:"525px", margin:"0px auto"}}>
                     <div style={{ display: "flex", justifyContent:"space-around", margin:"18px 0px", borderBottom:"1px solid grey", }}>
                         <div>
                             <img style={{width:"160px", height:"160px", borderRadius:"80", marginTop: "20px"}}
                             src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"/>
                         </div>
                         <div>
-                            <h4 align="center">{name}'s Recipes</h4>
-                            <div style={{display:"flex", justifyContent:"space-between", width:"95%", paddingBottom:"15px" }}>
+                            <h4 align="center">{name.split(' ').slice(0, -1).join(' ')}'s Profile</h4>
+                            <div style={{display:"flex", justifyContent:"space-between", width:"110%", paddingBottom:"15px" }}>
                               
                                     <h6 >{recipes.length} recipes </h6>
                                     {/* <h6 >20 following </h6>
