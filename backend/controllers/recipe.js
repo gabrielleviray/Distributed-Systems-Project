@@ -28,6 +28,6 @@ exports.addRecipe = async (req, res) => {
 exports.getAllRecipes = async (req, res) => {
   const recipes = await Recipe.find({}).select('-__v').sort({ createdAt: -1 });
   const value = JSON.stringify(recipes);
-  redisHelper.set('recipe:all', value, 60);
+  redisHelper.set('recipe:all', value, 10);
   return res.status(200).json(recipes);
 };

@@ -22,7 +22,7 @@ exports.getUserData = async (req, res) => {
 
   const key = 'user:' + user.username;
   const value = JSON.stringify(userData);
-  redisHelper.set(key, value, 60);
+  redisHelper.set(key, value, 10);
   
   if (await isAuth(req)) {
     userData.isMe = (req.user._id == user._id.valueOf());
